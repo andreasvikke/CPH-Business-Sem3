@@ -1,8 +1,0 @@
-entities/BankCustomer.class
-entities/MakeTestData.class
-rest/service/BankCustomerResource.class
-facades/BankCustomerFacade.class
-entities/one/BankCustomer_.class
-rest/service/ApplicationConfig.class
-dto/CustomerDTO.class
-entities/two/BankCustomer_.class

@@ -1,7 +1,0 @@
-dbfacade/CustomerFacade.class
-entity/one/Customer_.class
-rest/CustomerResource.class
-entity/two/Customer_.class
-rest/ApplicationConfig.class
-entity/Customer.class
-entity/EntityTested.class
