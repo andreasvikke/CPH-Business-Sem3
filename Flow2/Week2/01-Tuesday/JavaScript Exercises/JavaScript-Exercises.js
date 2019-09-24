@@ -27,6 +27,8 @@ var members = [
     {name : "Jan", age: 35},
     {name : "Janne", age: 25},
     {name : "Martin", age: 22}];
+// Votes
+var votes = [ "Clinton","Trump","Clinton","Clinton","Trump","Trump","Trump","None"];
 //#endregion
 
 //#region 1) Using existing functions that takes a callback as an argument
@@ -139,6 +141,80 @@ console.log(all.join(",") + "\n" + all.join(" ") + "\n" + all.join("#") + "\n" +
 console.log(numbers2.reduce((sum, num) => sum + num));
 
 // c)
-console.log(members.reduce((sum, member, index, arr) =>  sum + member["age"])/members.length);
+console.log(members.reduce(function (avg, member, index, arr) {
+    avg += member.age;
+    if (index === arr.length - 1)
+        return avg / arr.length;
+    return avg;
+}, 0));
 
+// d)
+console.log(votes.reduce(function (acc, vote, index, arr) {
+    acc[vote]++;
+    return acc;
+}, {Trump : 0, Clinton : 0, None: 0}));
 //#endregion
+
+//#region 6) Hoisting
+// Example 1)
+x = 5
+console.log(x);
+var x;
+
+// Example 2)
+b = 6;
+var y = 7
+console.log(b+y);
+var x;
+//#endregion
+
+//#region 7) this in JavaScript
+// Example 1)
+function printProp() {
+    return this.prop;
+}
+console.log(printProp.bind({prop: "Test"})());
+
+// Example 2)
+function bar() {
+    console.log(Object.prototype.toString.call(this));
+}
+bar.call(2);
+bar.call("Hello World!")
+//#endregion
+
+//#region 8) Reusable Modules with Closures 
+// 1)
+function add() {
+    var counter = 0;
+    function plus() {counter += 1;}
+    plus();   
+    return counter;
+}
+
+console.log(add());
+
+// 2)
+function createPerson(pName, pAge) {
+    var person = {
+        name : pName,
+        age : pAge,
+        setAge : function(newAge) {
+            this.age = newAge;
+        },
+        setName : function(newName) {
+            this.name = newName;
+        },
+        getInfo : function() {
+            return this.name + ", " + this.age;
+        }
+    } 
+    return person;
+}
+
+var person = createPerson("Andreas", "21");
+console.log(person.getInfo());
+person.setAge(22);
+console.log(person.getInfo());
+person.setName("Frederik");
+console.log(person.getInfo());
