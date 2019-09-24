@@ -117,18 +117,18 @@ function createTable(array) {
 }
 
 // d, e)
-// window.onload = function () {
-//     document.getElementById("nav").innerHTML = createNav(names);
-//     document.getElementById("box").innerHTML = createTable(names2).outerHTML;
+window.onload = function () {
+    document.getElementById("nav").innerHTML = createNav(names);
+    document.getElementById("box").innerHTML = createTable(names2).outerHTML;
 
-//     this.document.getElementById("filterA").onclick = function () {
-//         var filterNames = names.myFilter(n => n.includes("a"));
-//         var filterNames2 = names2.myFilter(n => n.name.includes("a"));
+    this.document.getElementById("filterA").onclick = function () {
+        var filterNames = names.myFilter(n => n.includes("a"));
+        var filterNames2 = names2.myFilter(n => n.name.includes("a"));
 
-//         document.getElementById("nav").innerHTML = createNav(filterNames);
-//         document.getElementById("box").innerHTML = createTable(filterNames2).outerHTML;
-//     }
-// }
+        document.getElementById("nav").innerHTML = createNav(filterNames);
+        document.getElementById("box").innerHTML = createTable(filterNames2).outerHTML;
+    }
+}
 
 //#endregion
 
@@ -149,10 +149,13 @@ console.log(members.reduce(function (avg, member, index, arr) {
 }, 0));
 
 // d)
-console.log(votes.reduce(function (acc, vote, index, arr) {
-    acc[vote]++;
+console.log(votes.reduce((acc, vote) => {
+    if(acc[vote] == null)
+        acc[vote] = 1;
+    else
+        acc[vote]++;
     return acc;
-}, {Trump : 0, Clinton : 0, None: 0}));
+}, {}));
 //#endregion
 
 //#region 6) Hoisting
@@ -218,3 +221,4 @@ person.setAge(22);
 console.log(person.getInfo());
 person.setName("Frederik");
 console.log(person.getInfo());
+//#endregion
