@@ -85,18 +85,11 @@
       "email": "buchananfrye@jumpstack.com"
     },
     {
-      "id": 112,
-      "age": 24,
-      "name": "Baker Pratt",
+      "name": "Andreas Vikke",
+      "age": "21",
       "gender": "male",
-      "email": "bakerpratt@jumpstack.com"
-    },
-    {
-      "age": 23,
-      "name": "Peter Pan",
-      "gender": "male",
-      "email": "peters@pan.com",
-      "id": 113
+      "email": "andreasvikke@gmail.com",
+      "id": 112
     }
   ]
 }

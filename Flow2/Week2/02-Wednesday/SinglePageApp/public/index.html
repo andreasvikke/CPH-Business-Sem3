@@ -8,8 +8,24 @@
 
 <body>
   <div id="main" class="container">
+    <form id="createUser">
+        <input id="userFormId" name="id" type="text" class="form-control" placeholder="Id">
+        <input id="userName" name="name" type="text" class="form-control" placeholder="Name">
+        <input id="userAge" name="age" type="number" min="3" max="99" value="3" class="form-control" placeholder="Age">
+        <select class="custom-select" name="gender" id="userGender">
+            <option selected value="male">male</option>
+            <option value="female">female</option>
+          </select>
+        <input id="userEmail" name="email" type="email" class="form-control" placeholder="Email">
+        <input type="submit" class="btn btn-dark" value="Add">
+        <input type="button" id="editUser" class="btn btn-dark" value="Edit">
+    </form>
+    <br/ >
+    <br/ >
+
     <input id="userId" type="text" class="form-control" placeholder="User id">
     <button id="get" class="btn btn-dark">Get by Id</button>
+    <button id="delete" class="btn btn-dark">Delete by Id</button>
     <button id="all" class="btn btn-dark">All</button>
 
     <div id="output"></div>
