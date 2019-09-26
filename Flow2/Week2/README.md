@@ -13,7 +13,7 @@
 
 **Exercises:**
 - 100% :heavy_check_mark:
-- [ES6 classes and Single Page Applications]()
+- [ES6 classes and Single Page Applications](https://github.com/AndreasVikke/CPH-Business-Sem3/tree/master/Flow2/Week2/02-Wednesday/Jokes)
 - [Small application to display a quote of the hour](https://github.com/AndreasVikke/CPH-Business-Sem3/tree/master/Flow2/Week2/02-Wednesday/AJAX_Fetch)
 - [JS Event handling, HTML5 and inline SVG](https://github.com/AndreasVikke/CPH-Business-Sem3/tree/master/Flow2/Week2/02-Wednesday/AJAX_Fetch)
 - Ajax with a full REST CRUD Endpoint and Error-handling

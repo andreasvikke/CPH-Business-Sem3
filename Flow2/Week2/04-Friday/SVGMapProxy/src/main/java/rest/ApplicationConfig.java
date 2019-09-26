@@ -3,7 +3,11 @@ package rest;
 import java.util.Set;
 import javax.ws.rs.core.Application;
 
-@javax.ws.rs.ApplicationPath("api")
+/**
+ *
+ * @author andreas
+ */
+@javax.ws.rs.ApplicationPath("proxy")
 public class ApplicationConfig extends Application {
 
     @Override
@@ -20,13 +24,9 @@ public class ApplicationConfig extends Application {
      * If required, comment out calling this method in getClasses().
      */
     private void addRestResourceClasses(Set<Class<?>> resources) {
-        resources.add(exceptions.GenericExceptionMapper.class);
-        resources.add(exceptions.MissingInputExceptionMapper.class);
-        resources.add(exceptions.PersonNotFoundExceptionMapper.class);
-        resources.add(org.glassfish.jersey.server.wadl.internal.WadlResource.class);
         resources.add(rest.CorsRequestFilter.class);
         resources.add(rest.CorsResponseFilter.class);
-        resources.add(rest.PersonResource.class);
+        resources.add(rest.CountryResource.class);
     }
-    
+
 }
