@@ -35,3 +35,8 @@
 
 **Exercises:**
 - 100% :heavy_check_mark:
+- Exam preparation exercise about AJAX, CORS and SVG]
+    - [Frontend SVG](https://github.com/AndreasVikke/CPH-Business-Sem3/tree/master/Flow2/Week2/04-Friday/SVGMap)
+    - [Backend Proxy](https://github.com/AndreasVikke/CPH-Business-Sem3/tree/master/Flow2/Week2/04-Friday/SVGMapProxy)
+- [Frontend exercise (last part of exercise from last week)](https://github.com/AndreasVikke/CPH-Business-Sem3/tree/master/Flow2/Week2/04-Friday/PersonFrontend)
+    - [Deployment](http://vikkeperson.surge.sh/)

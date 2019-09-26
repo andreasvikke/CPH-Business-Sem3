@@ -18,7 +18,7 @@
     <button type="button" class="btn btn-info" data-toggle="modal" data-target="#addPersonModal">Add New Person</button>
 
 
-    <div class="modal fade" id="addPersonModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal fade" id="addPersonModal" tabindex="-1" role="dialog" aria-hidden="true">
       <div class="modal-dialog" role="document">
         <div class="modal-content">
           <div class="modal-header">
@@ -45,6 +45,36 @@
         </div>
       </div>
     </div>
+
+    <div class="modal fade" id="editPersonModal" tabindex="-1" role="dialog" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Add New Person</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <form id="editPersonForm">
+            <div class="modal-body">
+                <input id="editId" type="hidden">
+                <input class="form-control" id="editfName" placeholder="Firstname" type="text">
+                <input class="form-control" id="editlName" placeholder="Lastname" type="text">
+                <input class="form-control" id="editphone" placeholder="Phone" type="text">
+                <br/>
+                <input class="form-control" id="editstreet" placeholder="Street" type="text">
+                <input class="form-control" id="editzip" placeholder="Zip" type="text">
+                <input class="form-control" id="editcity" placeholder="City" type="text">
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+              <button type="submit" class="btn btn-primary">Edit Person</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+
   </div>
 </body>
 
