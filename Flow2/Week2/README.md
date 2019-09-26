@@ -24,13 +24,14 @@
 ## Thursday 25th
 
 **Exercises:**
-- 100% :heavy_check_mark:
-- [REST with JAX RS](https://github.com/AndreasVikke/CPH-Business-Sem3/tree/master/Flow2/Week1/02-Wednesday/RestJaxRS)
+- 80% :heavy_check_mark:
+- I haven't dont the 2nd excersise as it's the same princip as the first.. And the time ran oit for me...
+- Single Origin Policy, and CORS with Java and JAX-RS
+    - [Backend](https://github.com/AndreasVikke/CPH-Business-Sem3/tree/master/Flow2/Week2/03-Thursday/CORSBackend)
+    - [Frontend](https://github.com/AndreasVikke/CPH-Business-Sem3/tree/master/Flow2/Week2/03-Thursday/CORSBackendGUITester)
+    - [Surge Deployment](http://vikkesinglepage.surge.sh/)
 
 ## Friday 27th
 
 **Exercises:**
 - 100% :heavy_check_mark:
-- [Object Relational Mapping with JPA](https://github.com/AndreasVikke/CPH-Business-Sem3/tree/master/Flow2/Week1/03-Friday/ORMJPA)
-- [ExamPrep_JPQL](https://github.com/AndreasVikke/CPH-Business-Sem3/tree/master/Flow2/Week1/03-Friday/ExamPrep)
-- [REST and JSON](https://github.com/AndreasVikke/CPH-Business-Sem3/tree/master/Flow2/Week1/03-Friday/RESTandJSON)
