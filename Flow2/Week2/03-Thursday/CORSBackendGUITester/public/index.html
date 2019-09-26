@@ -4,14 +4,21 @@
 <head>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link href="style.css" rel="stylesheet">
+  <script src="bundle.js"></script>
 </head>
 
 <body>
   <div class="container">
-    <button id="get" class="btn btn-dark">Get</button>
+    <input type="number" class="form-control" id="personId" placeholder="Id">
+    <input type="text" class="form-control" id="personName" placeholder="Name">
+
+    <button id="all" class="btn btn-dark">All</button>
+    <button id="get" class="btn btn-dark">Get Single</button>
+    <button id="add" class="btn btn-dark">Add</button>
+    <button id="edit" class="btn btn-dark">Edit</button>
+    <br /><br />
     <p id="output"></p>
   </div>
-  <script src="bundle.js"></script>
 </body>
 
 </html>

@@ -13,7 +13,7 @@ import javax.ws.rs.ext.Provider;
  */
 @PreMatching
 @Provider
-public class CorsFilter implements ContainerResponseFilter {
+public class CorsResponseFilter implements ContainerResponseFilter {
  @Override
  public void filter( ContainerRequestContext requestCtx, ContainerResponseContext res )
    throws IOException {
