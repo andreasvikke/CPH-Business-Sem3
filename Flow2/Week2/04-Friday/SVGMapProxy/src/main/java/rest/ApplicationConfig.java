@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package rest;
 
 import java.util.Set;
@@ -10,9 +5,9 @@ import javax.ws.rs.core.Application;
 
 /**
  *
- * @author Bacon
+ * @author andreas
  */
-@javax.ws.rs.ApplicationPath("api")
+@javax.ws.rs.ApplicationPath("proxy")
 public class ApplicationConfig extends Application {
 
     @Override
@@ -31,7 +26,7 @@ public class ApplicationConfig extends Application {
     private void addRestResourceClasses(Set<Class<?>> resources) {
         resources.add(rest.CorsRequestFilter.class);
         resources.add(rest.CorsResponseFilter.class);
-        resources.add(rest.PersonResource.class);
+        resources.add(rest.CountryResource.class);
     }
-    
+
 }

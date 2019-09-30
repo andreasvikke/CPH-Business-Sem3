@@ -6,8 +6,6 @@ import dto.PersonDTO;
 import dto.PersonsDTO;
 import entities.Address;
 import entities.Person;
-import exceptions.MissingInputException;
-import exceptions.PersonNotFoundException;
 import utils.EMF_Creator;
 import facades.PersonFacade;
 import javax.persistence.EntityManager;

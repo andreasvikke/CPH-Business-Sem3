@@ -94,6 +94,12 @@
             <scope>test</scope>
         </dependency>
         <dependency>
+            <groupId>org.eclipse.jetty</groupId>
+            <artifactId>jetty-servlet</artifactId>
+            <version>9.4.7.v20170914</version>
+            <classifier>config</classifier>
+        </dependency>
+        <dependency>
             <groupId>javax</groupId>
             <artifactId>javaee-web-api</artifactId>
             <version>7.0</version>
@@ -125,8 +131,8 @@
     <build>
        
         <plugins>
-             <!-- Plugin used to deploy to remote server -->
-             <plugin>
+            <!-- Plugin used to deploy to remote server -->
+            <plugin>
                 <groupId>org.apache.tomcat.maven</groupId>
                 <artifactId>tomcat7-maven-plugin</artifactId>
                 <version>2.2</version>
