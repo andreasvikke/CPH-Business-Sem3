@@ -1,4 +1,4 @@
-import React, { useState, replaceState } from "react";
+import React, { useState, useEffect } from "react";
 
 function ListItem(props) {
     return <li>{props.number}</li>;
@@ -30,16 +30,21 @@ function ListDemo(props) {
     </div>
   );
 }
+
 export default function App() {
-  var [numbers] = useState([1]);
-//   var count = 1;
-//   setInterval(() => {
-//     const nums = [];
-//     for(var i = 1; i <= count; i++) {
-//         nums.push(i);
-//     }
-//     count++;
-//     replaceState([nums]);
-//   }, 1000);
+  var [numbers, setNumbers] = useState([1]);
+
+  useEffect(() => {
+    var count = 1;
+    setInterval(() => {
+      const nums = [];
+      for(var i = 1; i <= count; i++) {
+          nums.push(i);
+      }
+      count++;
+      setNumbers(nums);
+    }, 1000);
+  }, []);
+
   return <ListDemo numbers={numbers} />;
 }
