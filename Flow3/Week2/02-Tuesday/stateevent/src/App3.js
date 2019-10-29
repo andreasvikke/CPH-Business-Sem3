@@ -1,31 +1,31 @@
 import React, { useState, useEffect } from 'react';
 import './App.css';
 
-function FetchJoke(url) {
-    return fetch(url, {
-        headers: new Headers({
-            "Accept" : "application/json"
-        })
-    })
-    .then(response => response.json());
-}
-
 function App() {
-    const [cnjoke, setCNJoke] = useState("");
-    const [dadjoke, setDadJoke] = useState("");
+    const [joke, setJoke] = useState("");
+    const [apiurl, setApiurl] = useState("https://icanhazdadjoke.com/");
+
+    useEffect(() => {
+        fetch(apiurl, {
+            headers: new Headers({
+                "Accept" : "application/json"
+            })
+        })
+        .then(response => response.json());
+    }, [apiurl]);
 
     useEffect(() => {
         const interval = setInterval(() => {
-            FetchJoke("https://icanhazdadjoke.com/").then(data => setDadJoke(data.joke));
+            setApiurl("https://icanhazdadjoke.com/");
         }, 10000);
         return () => clearInterval(interval);
     });
 
     return (
         <div className="App">
-            <button onClick={() => FetchJoke("https://api.chucknorris.io/jokes/random").then(data => setCNJoke(data.value))}>Get Chuck Norris Joke</button>
-            <p><b>Chuck Norris Joke:</b> {cnjoke}</p>
-            <p><b>Dad Joke:</b> {dadjoke}</p>
+            <button onClick={() => setApiurl("https://api.chucknorris.io/jokes/random")}>Get Chuck Norris Joke</button>
+            <p><b>Chuck Norris Joke:</b> {cnJoke}</p>
+            <p><b>Dad Joke:</b> {dadJoke}</p>
         </div>
     )
 }
