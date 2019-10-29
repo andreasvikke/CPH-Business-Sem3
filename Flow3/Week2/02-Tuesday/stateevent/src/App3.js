@@ -2,7 +2,11 @@ import React, { useState, useEffect } from 'react';
 import './App.css';
 
 function FetchJoke(url) {
-    return fetch(url)
+    return fetch(url, {
+        headers: new Headers({
+            "Accept" : "application/json"
+        })
+    })
     .then(response => response.json());
 }
 
@@ -12,7 +16,7 @@ function App() {
 
     useEffect(() => {
         const interval = setInterval(() => {
-            FetchJoke("https://icanhazdadjoke.com/slack").then(data => setDadJoke(data.attachments[0].text));
+            FetchJoke("https://icanhazdadjoke.com/").then(data => setDadJoke(data.joke));
         }, 10000);
         return () => clearInterval(interval);
     });
@@ -21,7 +25,7 @@ function App() {
         <div className="App">
             <button onClick={() => FetchJoke("https://api.chucknorris.io/jokes/random").then(data => setCNJoke(data.value))}>Get Chuck Norris Joke</button>
             <p><b>Chuck Norris Joke:</b> {cnjoke}</p>
-            <p><b>I Can Joke:</b> {dadjoke}</p>
+            <p><b>Dad Joke:</b> {dadjoke}</p>
         </div>
     )
 }
