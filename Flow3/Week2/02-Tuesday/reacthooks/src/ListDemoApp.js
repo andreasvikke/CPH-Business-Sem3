@@ -32,18 +32,15 @@ function ListDemo(props) {
 }
 
 export default function App() {
-  var [numbers, setNumbers] = useState([1]);
+  var [numbers] = useState([1]);
+  var [seconds, setSeconds] = useState([1]);
 
   useEffect(() => {
-    var count = 1;
-    setInterval(() => {
-      const nums = [];
-      for(var i = 1; i <= count; i++) {
-          nums.push(i);
-      }
-      count++;
-      setNumbers(nums);
+    const interval = setInterval(() => {
+      setSeconds(seconds++);
+      numbers.push(seconds);
     }, 1000);
+    return () => clearInterval(interval);
   }, []);
 
   return <ListDemo numbers={numbers} />;
