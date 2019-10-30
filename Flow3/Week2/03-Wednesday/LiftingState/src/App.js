@@ -26,6 +26,14 @@ function App() {
     setTodos([...todos]);
     setNewTodo({id:"", todoText:""})
   };
+
+  const deleteTodo = (index) => {
+    setTodos(todos.filter(t => t.id !== index));
+  }
+
+  const editTodo = (index) => {
+    setNewTodo({id: index, todoText:""});
+  }
   
   return (
     <div className="container outer">
@@ -35,12 +43,14 @@ function App() {
 
       <div className="row">
         <div className="col-6 allTodos">
-          <TodoList todos={todos} />
+          <TodoList todos={todos}
+            deleteTodo={deleteTodo}
+            editTodo={editTodo} />
         </div>
         <div className="col-5 new-todo">
           <NewTodo
             addTodo={addTodo}
-            nextTodo={newTodo}            
+            nextTodo={newTodo}         
           />
         </div>
       </div>
