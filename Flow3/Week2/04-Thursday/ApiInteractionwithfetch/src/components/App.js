@@ -13,16 +13,15 @@ function App({apiFacade}) {
   });
 
   const storeAddEditPerson = (person) => {
-    //Call this from the AddEditPerson control with the person to Add or Edit and Add/Edit via the apiFacade
+    apiFacade.addEditPerson(person);
   }
 
   const deletePerson = (id) => {
-    //Call this from the AllPerson control with the id for the person to delete
+    apiFacade.deletePerson(id);
   }
 
   const editPerson = (person) => {
-    //Call thisfrom the AllPerson control with the  person to edit
-    //Set the state variable personToAddEdit with this person (a clone) to make the new value flow down via props
+    setPersonToAddEdit(person);
   }
 
 
@@ -39,7 +38,6 @@ function App({apiFacade}) {
           />
         </div>
         <div className="col-md-3">
-          <h3 style={{ textAlign: "center" }}>Add Persons</h3>
           <AddEditPerson
             newPerson={personToAddEdit}
             //  Next two lines, are if you decide to use the pattern introduced in the day-2 exercises

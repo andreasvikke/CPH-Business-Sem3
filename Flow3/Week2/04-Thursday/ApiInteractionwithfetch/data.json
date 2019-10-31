@@ -2,10 +2,10 @@
   "api": [
     {
       "id": "59dde0def94062f06bcc1211",
-      "age": 27,
+      "age": "28",
       "name": "Gale Sullivan",
       "gender": "female",
-      "email": "galesullivan@zedalis.com"
+      "email": "galesullivan@zedalis.dk"
     },
     {
       "id": "59dde0deb5516ea4f23590f9",

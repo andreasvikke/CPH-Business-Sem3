@@ -31,12 +31,14 @@ function apiFacade() {
   }
 
   function addEditPerson(person) {
-   //Complete me. A smart version will handle both Add and Edit, but focus on Add (POST) only first
-   return fetch(URL, makeOptions("POST", person)).then(handleHttpErrors);
+    if(person.id === "")
+      return fetch(URL, makeOptions("POST", person)).then(handleHttpErrors);
+    else
+      return fetch(URL + "/" + person.id, makeOptions("PUT", person)).then(handleHttpErrors);
   }
 
   function deletePerson(id) {
-    //Complete me
+    return fetch(URL + "/" + id, makeOptions("DELETE", null)).then(handleHttpErrors);
   }
   
   return {

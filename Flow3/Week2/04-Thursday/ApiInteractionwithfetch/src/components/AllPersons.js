@@ -21,7 +21,7 @@ export default function AllPersons(props) {
               <td>{person.email}</td>
               <td>
                 (<a href="xx" onClick={(e)=>{e.preventDefault();editPerson(person)}}>edit</a>, 
-                <a href="xx" onClick={(e)=>{e.preventDefault();deletePerson(person.id)}}>delete)</a>
+                <a href="xx" onClick={(e)=>{e.preventDefault();deletePerson(person.id)}}>delete</a>)
               </td>
             </tr>
           ))}

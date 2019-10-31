@@ -13,15 +13,21 @@ export default function AddEditPerson(props) {
   }
   const handleSubmit = (evt) => {
     evt.preventDefault();
-    console.log(person);}
+    console.log(person);
+    props.addEditPerson(person);
+  }
+
+  const title = person.id === "" ? "Add Persons" : "Edit Person"
 
   return (
     <div>
+      <h3 style={{ textAlign: "center" }}>{title}</h3>
       <form className="form-horizontal" onSubmit={handleSubmit}>
         <div className="form-group">
           <label className="control-label col-sm-3">Id:</label>
           <div className="col-sm-9">
-            <input className="form-control" readOnly id="id" />
+            <input className="form-control" readOnly id="id" 
+              value={person.id} />
           </div>
         </div>
         <div className="form-group">
@@ -33,6 +39,7 @@ export default function AddEditPerson(props) {
               className="form-control"
               name="name"
               placeholder="Enter Name"
+              value={person.name}
               onChange={handleChange}
             />
           </div>
@@ -47,6 +54,7 @@ export default function AddEditPerson(props) {
               className="form-control"
               name="age"
               placeholder="Enter age"
+              value={person.age}
               onChange={handleChange}
             />
           </div>
@@ -61,6 +69,7 @@ export default function AddEditPerson(props) {
               className="form-control"
               name="email"
               placeholder="Enter email"
+              value={person.email}
               onChange={handleChange}
             />
           </div>
@@ -74,6 +83,7 @@ export default function AddEditPerson(props) {
               className="form-control"
               name="gender"
               placeholder="Enter Gender"
+              value={person.gender}
               onChange={handleChange}
             />
           </div>
@@ -93,8 +103,6 @@ export default function AddEditPerson(props) {
           </div>
         </div>
       </form>
-      <p>Please provide me with the ability to create new persons</p>
-      <p>And update the backend when submitted</p>
     </div>
   );
 }
