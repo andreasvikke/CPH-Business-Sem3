@@ -32,7 +32,8 @@ function App() {
   }
 
   const editTodo = (index) => {
-    setNewTodo({id: index, todoText:""});
+    let t = todos.find(t => t.id === index);
+    setNewTodo({id: index, todoText: t.todoText});
   }
   
   return (

@@ -32,7 +32,8 @@ function App() {
   }
 
   const editPerson = index => {
-    setNewPerson({id: index, name: ""});
+    let pers = persons.find(p => p.id === index);
+    setNewPerson({id: index, name: pers.name});
   }
   
   return (
