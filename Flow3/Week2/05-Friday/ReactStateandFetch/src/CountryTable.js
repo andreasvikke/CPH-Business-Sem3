@@ -38,8 +38,6 @@ const CountryTable = ({ labels, countries, links, pageChange, pageFilter }) => {
 
   return (
     <div>
-      <p>Replace the thead section with a row generated from the Labels endpoint</p>
-      <p>Replace the tbody section with rows generated from the countries endpoint</p>
       <table className="table">
         <thead>
           <tr>

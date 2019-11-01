@@ -7,8 +7,10 @@ const App = ({factory}) => {
   const [countries, setCountries] = useState([]);
   const [links, setLinks] = useState("");
   const [currentPage, setCurrentPage] = useState("");
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
+    setLoading(true);
     factory.getLabels().then(res => res.json()).then(data => setLabels(data));
     factory.getCountries("")
       .then(res => {
@@ -20,12 +22,20 @@ const App = ({factory}) => {
       .then(res => res.json())
       .then(data => setCountries(data));
       setCurrentPage("https://countries-project.herokuapp.com/countries?_page=1&_limit=4");
+      setLoading(false);
   }, [])
 
   useEffect(() => {
     const interval = setInterval(() => {
-      //factory.getLabels().then(data => setLabels(data));
-      //factory.getCountries(page).then(data => setCountries(data));
+      // factory.getCountries(currentPage)
+      // .then(res => {
+      //   res.headers.forEach(function(value, name) {
+      //     if(name === "link")
+      //       setLinks(value);
+      //   });
+      //   return res;})
+      // .then(res => res.json())
+      // .then(data => setCountries(data));
     }, 3000);
     return () => clearInterval(interval);
   }, [])
@@ -61,8 +71,7 @@ const App = ({factory}) => {
         <h2>React, State, Fetch</h2>
       </div>
       <div className="App-intro">
-        <p>Your initial task is to fetch data from the server (see exercise for how to start it),
-          and create a table below, with these data</p>          
+        <p>{loading ? "Loading......" : "" }</p>
         <CountryTable
           labels={labels}
           countries={countries}
