@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import {BrowserRouter as Router, Route, NavLink, Switch, Prompt, Link, useRouteMatch} from "react-router-dom"
+import React, { useState, useEffect } from 'react';
+import { BrowserRouter as Router, Route, NavLink, Redirect, Switch, Prompt, Link, useRouteMatch } from "react-router-dom"
 import './App.css';
 
 function App({ BookStore }) {
@@ -11,16 +11,22 @@ function App({ BookStore }) {
           <Home />
         </Route>
         <Route exact path="/products">
-          <Product books={BookStore.getBooks()} />
+          <Product BookStore={BookStore} />
         </Route>
         <Route exact path="/products/:id">
-          <ProductDetail books={BookStore.getBooks()} />
+          <ProductDetail BookStore={BookStore} />
         </Route>
         <Route path="/company">
           <Company />
         </Route>
         <Route path="/addbook">
-          <AddBook BookStore={BookStore} />
+          <AddEditBook BookStore={BookStore} />
+        </Route>
+        <Route path="/editbook/:id">
+          <AddEditBook BookStore={BookStore} />
+        </Route>
+        <Route path="/deletebook/:id">
+          <DeleteBook BookStore={BookStore} />
         </Route>
         <Route path="*">
           <NoMatch />
@@ -49,24 +55,43 @@ function Home() {
   )
 }
 
-function Product({ books }) {
+function DeleteBook({ BookStore }) {
   let match = useRouteMatch();
+  BookStore.deleteBook(match.params.id);
+
+  return (
+    <Redirect to="/products" />
+  )
+}
+
+function Product({ BookStore }) {
+  let match = useRouteMatch();
+  const [books, setBooks] = useState([]);
+
+  useEffect(() => {
+    BookStore.getBooks().then(data => setBooks(data));
+  }, [])
+
   return (
     <div>
       <h3>Product</h3>
       <ul>
         {books.map((book, index) => (
-          <li key={index}>{book.title} 
-          (<Link to={`${match.url}/${book.id}`}>Details</Link>, )</li>
+          <li key={index}>{book.title}
+            (<Link to={`${match.url}/${book.id}`}>Details</Link>,  <Link to={`/editbook/${book.id}`}>Edit</Link>, <Link to={`/deletebook/${book.id}`}>Delete</Link>)</li>
         ))}
       </ul>
     </div>
   )
 }
 
-function ProductDetail({ books }) {
+function ProductDetail({ BookStore }) {
   let match = useRouteMatch();
-  let book = books.find((book) => book.id == match.params.id);
+  const [book, setBook] = useState({});
+
+  useEffect(() => {
+    BookStore.getBooks().then(data => setBook(data.find((book) => book.id == match.params.id)));
+  }, [])
 
   return (
     <div>
@@ -80,22 +105,29 @@ function ProductDetail({ books }) {
   )
 }
 
-function AddBook({ BookStore }) {
-  const [book, setBook] = useState({});
+function AddEditBook({ BookStore }) {
+  let match = useRouteMatch();
+
+  const [book, setBook] = useState({title: "", info: ""});
   const [isBlocking, setIsBlocking] = useState(false);
+
+  useEffect(() => {
+    BookStore.getBooks().then(data => setBook(data.find((b) => b.id == match.params.id) || {title: "", info: ""}));
+  }, [])
 
   const onChange = (evt) => {
     setIsBlocking(true);
-    setBook({...book, [evt.target.name]: evt.target.value});
+    setBook({ ...book, [evt.target.name]: evt.target.value });
   }
   const onSubmit = (evt) => {
     evt.preventDefault();
-    BookStore.addBook(book);
+    setIsBlocking(false);
+    BookStore.addEditBook(book);
   }
 
   return (
     <div>
-      <h3>Add Book</h3>
+      <h3>{book.title !== "" ? "Edit Book" : "Add Book"}</h3>
       <Prompt
         when={isBlocking}
         message={location =>
@@ -104,12 +136,14 @@ function AddBook({ BookStore }) {
       />
       <form onSubmit={onSubmit}>
         <input placeholder="Title"
-               name="title"
-               onChange={onChange} />
+          name="title"
+          onChange={onChange}
+          value={book.title} />
         <input placeholder="Info"
-               name="info"
-               onChange={onChange} />
-        <input type="submit" value="Submit" />
+          name="info"
+          onChange={onChange}
+          value={book.info} />
+        <input type="submit" value={book.title !== "" ? "Save Book" : "Add Book"} />
       </form>
     </div>
   )

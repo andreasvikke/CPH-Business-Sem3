@@ -1,21 +1,44 @@
-function BookStore() {
-    let books = [
-        { id: 1,title: "How to Learn JavaScript - Vol 1", info: "Study hard"},
-        { id: 2,title: "How to Learn ES6",info: "Complete all exercises :-)"},
-        { id: 3,title: "How to Learn React",info: "Complete all your CA's"},
-        { id: 4,title: "Learn React", info: "Don't drink beers, until Friday (after four)"}
-        ];
-    let nextID = 5;
+let url = "http://localhost:4000/books";
 
-    const getBooks = () => { return books; }
-    const addBook = (book) => {
-        book.id = ++nextID;
-        books.push(book);
+function makeOptions(method, body) {
+    var opts = {
+        method: method,
+        headers: {
+            "Content-type": "application/json"
+        }
+    };
+    if (body) {
+        opts.body = JSON.stringify(body);
+    }
+    return opts;
+}
+
+function handleHttpErrors(res) {
+    if (!res.ok) {
+        return Promise.reject({ status: res.status, fullError: res.json() });
+    }
+    return res.json();
+}
+
+
+function BookStore() {
+    const getBooks = () => {
+        return fetch(url).then(handleHttpErrors);
+    }
+    const addEditBook = (book) => {
+        if (book.id === undefined)
+            return fetch(url, makeOptions("POST", book)).then(handleHttpErrors);
+        else
+            return fetch(`${url}/${book.id}`, makeOptions("PUT", book)).then(handleHttpErrors);
+    }
+    const deleteBook = (id) => {
+        return fetch(`${url}/${id}`, makeOptions("DELETE")).then(handleHttpErrors);
     }
 
     return {
         getBooks,
-        addBook
+        addEditBook,
+        deleteBook
     }
 }
 export default BookStore();
